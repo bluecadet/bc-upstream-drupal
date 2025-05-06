@@ -9,8 +9,48 @@
         }
     ],
     "require": {
+        "cweagans/composer-patches": "^1.7",
+        "drupal/admin_toolbar": "^3.5",
+        "drupal/config_pages": "^2.17",
+        "drupal/config_split": "^2.0",
+        "drupal/datalayer": "^2.1",
+        "drupal/diff": "^1.8",
+        "drupal/editoria11y": "^2.2",
+        "drupal/field_group": "^4.0",
+        "drupal/gin": "^4.0",
+        "drupal/gin_login": "^2.1",
+        "drupal/gin_toolbar": "^2.0",
+        "drupal/google_tag": "^2.0",
+        "drupal/linkit": "^7.0",
+        "drupal/link_attributes": "^2.1",
+        "drupal/metatag": "^2.1",
+        "drupal/paragraphs": "^1.19",
+        "drupal/pathauto": "^1.13",
+        "drupal/redirect": "^1.11",
+        "drupal/save_edit": "^1.8",
+        "drupal/schema_metatag": "^3.0",
+        "drupal/seckit": "^2.0",
+        "drupal/simple_sitemap": "^4.2",
+        "drupal/token": "^1.15",
+        "drupal/token_filter": "^2.2",
+        "drupal/views_ajax_history": "^1.8",
+        "joachim-n/composer-manifest": "^1.1",
+        "kint-php/kint": "^6.0"
     },
     "extra": {
         "_README": "To make a custom upstream, clone this repository and add any dependencies to be provided by this upstream to this composer.json file. Leave the root-level composer.json file for the exclusive use of each individual site; do not modify it after your custom upstream has been published. See https://pantheon.io/docs/create-custom-upstream for more information."
+    },
+    "require-dev": {
+        "drupal/coder": "^8.3",
+        "drupal/security_review": "^3.1",
+        "drupal/upgrade_status": "^4.3",
+        "mglaman/phpstan-drupal": "^2.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpunit/php-code-coverage": "^12.2",
+        "phpunit/phpunit": "^12.1",
+        "squizlabs/php_codesniffer": "^3.12",
+        "weitzman/drupal-test-traits": "^2.5"
     }
 }
