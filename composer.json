@@ -1,6 +1,6 @@
 {
-    "name": "pantheon-upstreams/drupal-composer-managed",
-    "description": "Install Drupal 9 with Composer on Pantheon.",
+    "name": "bluecadet/bc-upstream-drupal",
+    "description": "Install Drupal 11 with Composer on Pantheon.",
     "type": "project",
     "license": "MIT",
     "repositories": [
@@ -14,13 +14,14 @@
         }
     ],
     "require": {
-        "pantheon-upstreams/upstream-configuration": "dev-main",
         "composer/installers": "^1.9",
-        "drupal/core-composer-scaffold": "^11",
-        "drupal/core-recommended": "^11",
+        "drupal/core-composer-scaffold": "^11.1",
+        "drupal/core-project-message": "^11.1",
+        "drupal/core-recommended": "^11.1",
+        "drush/drush": "^13",
         "pantheon-systems/drupal-integrations": "^11",
-        "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^13"
+        "pantheon-systems/upstream-management": "^1.0",
+        "pantheon-upstreams/upstream-configuration": "dev-main"
     },
     "require-dev": {
         "drupal/core-dev": "^11"
@@ -42,9 +43,13 @@
                 "[project-root]/.gitattributes": false
             }
         },
+        "installer-types": [
+            "custom-drupal-module"
+        ],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/bluecadet/{$name}": ["type:custom-drupal-module"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
@@ -65,11 +70,29 @@
     },
     "scripts": {
         "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
-        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"]
+        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"],
+        "code-sniff": [
+            "./vendor/bin/phpcs -s --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/modules/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/modules/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/themes/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/themes/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1"
+        ],
+        "code-sniff-summary": [
+            "./vendor/bin/phpcs -s --report=summary --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/modules/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --report=summary --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/modules/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --report=summary --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/themes/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1",
+            "./vendor/bin/phpcs -s --report=summary --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,txt --ignore=node_modules,bower_components,vendor,dist --exclude=Drupal.InfoFiles.AutoAddedKeys --colors ./web/themes/custom --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan"
+        ],
+        "drupal-check": [
+            "./vendor/bin/drupal-check --no-progress --no-interaction ./web/modules/custom"
+        ]
     },
     "config": {
         "preferred-install": "dist",
-        "sort-packages": false,
+        "sort-packages": true,
         "platform": {
             "php": "8.3.11"
         },
@@ -80,7 +103,10 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "pantheon-systems/upstream-management": true,
+            "joachim-n/composer-manifest": true,
+            "drupal/core-project-message": true
         }
     }
 }
