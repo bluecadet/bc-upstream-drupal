@@ -14,6 +14,7 @@
 !scripts
 !scripts/*
 !locked
+!.gitignore
 
 ## Allow composer.lock to be committed in custom upstreams if you wish
 ## to force all sites created from this upstream to be locked to the

@@ -5,10 +5,9 @@ enforce_https: transitional
 php_version: 8.3
 database:
   version: 10.6
-drush_version: 10
+drush_version: 12
 build_step: true
 protected_web_paths:
   - /private/
   - /sites/default/files/private/
   - /sites/default/files/config/
-
