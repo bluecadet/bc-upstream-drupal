@@ -23,7 +23,7 @@
         "_README": "To make a custom upstream, clone this repository and add any dependencies to be provided by this upstream to this composer.json file. Leave the root-level composer.json file for the exclusive use of each individual site; do not modify it after your custom upstream has been published. See https://pantheon.io/docs/create-custom-upstream for more information."
     },
     "require-dev": {
-        "drupal/coder": "^8.3",
+        "drupal/coder": "^8.3.31",
         "drupal/security_review": "^3.1",
         "drupal/upgrade_status": "^4.3",
         "mglaman/phpstan-drupal": "^2.0",
