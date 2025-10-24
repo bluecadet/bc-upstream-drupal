@@ -1,5 +1,5 @@
 {
-    "name": "pantheon-upstreams/upstream-configuration",
+    "name": "bluecadet/bc-upstream-drupal",
     "type": "project",
     "version": "dev-main",
     "repositories": [
