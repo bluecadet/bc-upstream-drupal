@@ -2,6 +2,25 @@
 
 All notable changes specific to pantheon-upstreams/drupal-composer-managed are noted here.
 
+## Bluecadet Update - 2026-04-09
+
+### Changed
+- Updated Drupal core minimum version from 11.1.x to 11.3.5
+  - `drupal/core-composer-scaffold`: ^11.1 → ^11.3.5
+  - `drupal/core-project-message`: ^11.1 → ^11.3.5
+  - `drupal/core-recommended`: ^11.1 → ^11.3.5
+  - `drupal/core-dev`: ^11 → ^11.3.5
+
+### Testing and Validation
+To validate Drupal core version updates:
+1. Run `composer validate` to check composer.json syntax
+2. Run `composer update --dry-run` to preview what will be updated
+3. Create a test installation and verify:
+   - `composer install` completes successfully
+   - `drush status` shows correct Drupal version (11.3.5 or higher)
+   - Core security updates are applied
+   - No dependency conflicts exist
+
 ## Pantheon Update #5 - 2024-07-18
 
 ### Changed
