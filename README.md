@@ -12,6 +12,39 @@ Composer.
 For more information and detailed installation guides, please visit the
 Integrated Composer Pantheon documentation: https://pantheon.io/docs/integrated-composer
 
+## Drupal Core Version Management
+
+This upstream currently requires **Drupal 11.3.5 or higher**. The version constraints use the caret (`^`) operator, which allows:
+- ✅ Patch updates (e.g., 11.3.6, 11.3.7)
+- ✅ Minor updates (e.g., 11.4.0, 11.5.0)
+- ❌ Major updates (e.g., 12.0.0)
+
+This ensures automatic security updates while maintaining API compatibility.
+
+### When to Update Drupal Core Versions
+
+Update the minimum Drupal core version when:
+- **Security releases** require a minimum version
+- **Bug fixes** in newer versions are needed for stability
+- **New features** in Drupal core are required by the upstream
+- Maintaining compatibility with Pantheon platform updates
+
+### How to Update
+
+1. Update all core packages together in `composer.json`:
+   - `drupal/core-composer-scaffold`
+   - `drupal/core-project-message`
+   - `drupal/core-recommended`
+   - `drupal/core-dev`
+
+2. Test the changes (see [TESTING.md](TESTING.md) for detailed procedures)
+
+3. Update [CHANGELOG.md](CHANGELOG.md) with the change
+
+4. Create a pull request with clear rationale for the version update
+
+See [TESTING.md](TESTING.md) for comprehensive validation procedures.
+
 ## Contributing
 
 Contributions are welcome in the form of GitHub pull requests. However, the

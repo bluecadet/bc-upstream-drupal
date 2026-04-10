@@ -15,16 +15,16 @@
     ],
     "require": {
         "composer/installers": "^1.9",
-        "drupal/core-composer-scaffold": "^11.1",
-        "drupal/core-project-message": "^11.1",
-        "drupal/core-recommended": "^11.1",
+        "drupal/core-composer-scaffold": "^11.3.5",
+        "drupal/core-project-message": "^11.3.5",
+        "drupal/core-recommended": "^11.3.5",
         "drush/drush": "^13",
         "pantheon-systems/drupal-integrations": "^11",
         "pantheon-systems/upstream-management": "^1.0",
         "pantheon-upstreams/upstream-configuration": "dev-main"
     },
     "require-dev": {
-        "drupal/core-dev": "^11"
+        "drupal/core-dev": "^11.3.5"
     },
     "conflict": {
         "drupal/drupal": "*"
