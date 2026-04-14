@@ -1,5 +1,5 @@
 {
-    "name": "bluecadet/bc-upstream-drupal",
+    "name": "bluecadet/upstream-configuration",
     "type": "project",
     "version": "dev-main",
     "repositories": [
@@ -13,9 +13,9 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.5",
         "drupal/config_pages": "^2.17",
-        "drupal/gin": "^4.0",
+        "drupal/gin": "^5.0",
         "drupal/gin_login": "^2.1",
-        "drupal/gin_toolbar": "^2.0",
+        "drupal/gin_toolbar": "^3.0",
         "joachim-n/composer-manifest": "^1.1",
         "kint-php/kint": "^6.0"
     },
