@@ -99,9 +99,9 @@ class ComposerScripts {
         $composerJson['extra']['enable-patching'] = TRUE;
       }
 
-      // allow phpstan/extension-installer in preparation for Drupal 10
+      // allow phpstan/extension-installer in preparation for Drupal 11
       if (!isset($composerJson['config']['allow-plugins']['phpstan/extension-installer'])) {
-        $io->write("<info>Allow phpstan/extension-installer in preparation for Drupal 10</info>");
+        $io->write("<info>Allow phpstan/extension-installer in preparation for Drupal 11</info>");
         $composerJson['config']['allow-plugins']['phpstan/extension-installer'] = TRUE;
       }
 
