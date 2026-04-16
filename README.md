@@ -53,3 +53,28 @@ directly accept pull requests.
 
 Instead, to propose a change, please fork [pantheon-systems/drupal-composer-managed](https://github.com/pantheon-systems/drupal-composer-managed)
 and submit a PR to that repository.
+
+## Merging updates from your upstream.
+To manually apply changes from the external `upstream` repository (branch: `main`):
+
+1. Add the upstream repository as a remote (if not already added):
+   ```sh
+   git remote add upstream https://github.com/bluecadet/upstream.git
+   ```
+   Replace `bluecadet` with the correct organization or user name.
+
+2. Fetch the latest changes from upstream:
+   ```sh
+   git fetch upstream
+   ```
+
+3. Merge the upstream main branch into your current branch:
+   ```sh
+   git merge upstream/main
+   ```
+
+4. Resolve any merge conflicts if they occur, then commit the result.
+
+5. Push your changes to your fork or origin as needed.
+
+For more details, see the [GitHub documentation on syncing a fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
