@@ -1,15 +1,15 @@
 # Changelog
 
-All notable changes specific to pantheon-upstreams/drupal-composer-managed are noted here.
+All notable changes specific to bluecadet/bc-base-drupal are noted here.
 
 ## Bluecadet Update - 2026-04-09
 
 ### Changed
 - Updated Drupal core minimum version from 11.1.x to 11.3.5
   - `drupal/core-composer-scaffold`: ^11.1 → ^11.3.5
-  - `drupal/core-project-message`: ^11.1 → ^11.3.5
-  - `drupal/core-recommended`: ^11.1 → ^11.3.5
-  - `drupal/core-dev`: ^11 → ^11.3.5
+  - `drupal/core-project-message`: ^11.0 → ^11.3.5
+  - `drupal/core-recommended`: ^11.0 → ^11.3.5
+  - `drupal/core-dev`: ^11.0 → ^11.3.5
 
 ### Testing and Validation
 To validate Drupal core version updates:
@@ -24,7 +24,7 @@ To validate Drupal core version updates:
 ## Pantheon Update #5 - 2024-07-18
 
 ### Changed
-- Upgraded PHP to 8.2 [48](https://github.com/pantheon-systems/drupal-composer-managed/pull/48])
+- Upgraded PHP to 8.2 [48](https://github.com/pantheon-systems/drupal-composer-managed/pull/48)
 
 ## Pantheon Update #4 - 2023-06-27
 

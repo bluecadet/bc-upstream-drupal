@@ -5,7 +5,7 @@ that work with the Platform's Integrated Composer build process. It is also the
 Platform's standard Drupal 9 upstream.
 
 Unlike with earlier Pantheon upstreams, files such as Drupal Core that you are
-unlikely to adjust while building sites are not in the main branch of the 
+unlikely to adjust while building sites are not in the main branch of the
 repository. Instead, they are referenced as dependencies that are installed by
 Composer.
 
