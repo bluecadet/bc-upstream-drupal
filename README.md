@@ -1,16 +1,15 @@
-# Bluecadet Base Drupal Site
+# [project-name]
 
-Forked from [Pantheon Drupal 11 Upstream](pantheon-upstreams/drupal-composer-managed)
+Built on the [Bluecadet Base Drupal Upstream](https://github.com/bluecadet/bc-upstream-drupal), which is forked from [Pantheon Drupal 11 Upstream](pantheon-upstreams/drupal-composer-managed).
 
-This is Bluecadet's recommended starting point for forking new [Drupal](https://www.drupal.org/) upstreams
-that work on Pantheon Platform's Integrated Composer build process.
+This is a Bluecadet [Drupal](https://www.drupal.org/) project hosted on Pantheon Platform using Integrated Composer.
 
 For more information, please visit the Integrated Composer Pantheon
 documentation: https://pantheon.io/docs/integrated-composer
 
 ## Getting Started
 
-- [Bluecadet Base Drupal Site](#bluecadet-base-drupal-site)
+- [\[project-name\]](#project-name)
   - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Drupal Core Version Management](#drupal-core-version-management)
@@ -42,7 +41,7 @@ documentation: https://pantheon.io/docs/integrated-composer
     - [Examples](#examples-1)
   - [Drupal Services (and local development)](#drupal-services-and-local-development)
   - [New Relic](#new-relic)
-  - [Starting a New Project ](#starting-a-new-project-)
+  - [Starting a New Project](#starting-a-new-project)
   - [Transitioning a Project between "development", "pre-launch", and "post-launch"](#transitioning-a-project-between-development-pre-launch-and-post-launch)
   - [Merging updates from your upstream.](#merging-updates-from-your-upstream)
 
@@ -105,7 +104,7 @@ Before opening a pull request, confirm the updated core version installs cleanly
 
 4. Import the database and files (download from Pantheon dev environment, latest backup):
    ```sh
-   ddev pull pantheon --environment=PANTHEON_SITE=bc-base-drupal,PANTHEON_ENVIRONMENT=live
+   ddev pull pantheon --environment=PANTHEON_SITE=[project-name],PANTHEON_ENVIRONMENT=live
    ```
 
 5. Import configuration:
@@ -141,7 +140,7 @@ Before opening a pull request, confirm the updated core version installs cleanly
    - BrowserSync will be available, enabling automatic page reloads when changes are made.
    - You'll see output similar to this:
      ```
-     [bldr] Proxying: https://bc-base-drupal.ddev.site
+     [bldr] Proxying: https://[project-name].ddev.site
      [bldr] Access URLs:
            Local: https://localhost:3000
            External: https://192.168.4.30:3000
@@ -214,9 +213,9 @@ The default DDEV configuration includes PHP settings in `.ddev/php/pantheon.ini`
 
 | Pantheon | Description |
 | --- | --- |
-| [`dev`](https://dev-bc-base-drupal.pantheonsite.io/) | Development environment where new features and bug fixes are initially deployed and tested. This environment is used for ongoing development work and is not stable for client review. |
-| [`test`](https://test-bc-base-drupal.pantheonsite.io/) | Staging environment used for quality assurance and user acceptance testing. It can be for temporarily testing content but should not used for staging content that will be deployed to live. It is important that PMs and the client understand that the environment can be wiped and reset at any time. (See Persistent Branches below if a more stale environment is needed.) |
-| [`live`](https://live-bc-base-drupal.pantheonsite.io/) | Production environment that hosts the public-facing website. This is the stable, live version of the site accessible to all users. |
+| [`dev`](https://dev-[project-name].pantheonsite.io/) | Development environment where new features and bug fixes are initially deployed and tested. This environment is used for ongoing development work and is not stable for client review. |
+| [`test`](https://test-[project-name].pantheonsite.io/) | Staging environment used for quality assurance and user acceptance testing. It can be for temporarily testing content but should not used for staging content that will be deployed to live. It is important that PMs and the client understand that the environment can be wiped and reset at any time. (See Persistent Branches below if a more stale environment is needed.) |
+| [`live`](https://live-[project-name].pantheonsite.io/) | Production environment that hosts the public-facing website. This is the stable, live version of the site accessible to all users. |
 
 We use Pantheon's multidev environments to preview changes from pull requests and sprint release branches before they are merged into the main development workflow.
 
@@ -454,55 +453,44 @@ References:
 - https://docs.pantheon.io/guides/new-relic/new-relic-quicksilver
 - https://github.com/pantheon-systems/quicksilver-examples/tree/main/new_relic_deploy
 
-## Starting a New Project <!-- Needs Verification on next project Start -->
+## Starting a New Project
 
-The steps to take when creating a new web project at Bluecadet
+The steps to take when creating a new web project at Bluecadet.
 
-- Decide on a project machine name. For ease we will use this across all entities, e.g. `project-name-example`.
-- Create a new repo on github.com, using the project name.
-  - TODO: detail directions.
-  - Setup Repo Secrets
-    - https://github.com/bluecadet/[PROJECT NAME]/settings/secrets/actions
-    - Add `PANTHEON_REPO` -> TODO: document these with CI updates
-    - Add `PROJECT_PAT` -> TODO: document these with CI updates
-- Create a Pantheon Project, using the project name.
+- Decide on a project machine name. For ease we will use this across all entities, e.g. `[project-name]`.
+
+- Create a new Pantheon site from the [Pantheon dashboard](https://dashboard.pantheon.io/), selecting this upstream (`bc-upstream-drupal`).
   - TODO: detail directions.
   - Start DEV site
   - Init TEST site
   - Init LIVE site
-- Create a clean code base from bluecadet/bc-base-drupal repo by cloning.
-  - Clone repo
-  ```bash
-  # Clone last commit of latest from the develop branch.
-  git clone -b develop --single-branch --depth 1 git@github.com:bluecadet/bc-base-drupal.git [PROJECT NAME]
 
-  # Remove ./.git to remove all history and connection to bluecadet/bc-base-drupal.
-  rm -rf [PROJECT NAME]/.git/
+- Create a new GitHub repo using the project name, and connect it to your Pantheon site.
+  - TODO: detail directions.
+  - Setup Repo Secrets
+    - https://github.com/bluecadet/[project-name]/settings/secrets/actions
+    - Add `PANTHEON_REPO` -> TODO: document these with CI updates
+    - Add `PROJECT_PAT` -> TODO: document these with CI updates
+
+- Clone the repository locally:
+  ```sh
+  git clone git@github.com:bluecadet/[project-name].git
+  cd [project-name]
   ```
-  - Update project specific references (should be able to do a quick search on 'bc-base-drupal')
-    - ./.projectconfig.cjs
-    - ./bldr.local.config.js
-    - ./package.json
-    - ./README.md
-    - ./.ddev/config.yml
-  - Setup new repo
-  ```
-  cd [PROJECT NAME]
-  git init
-  git commit .
-  git branch -M develop
-  git remote add origin git@github.com:bluecadet/[PROJECT NAME].git
-  git push -u origin develop
-  ```
+  - Update project-specific references (search for `[project-name]` and replace with your actual project name):
+    - `./.projectconfig.cjs`
+    - `./bldr.local.config.js`
+    - `./package.json`
+    - `./README.md`
+    - `./.ddev/config.yml`
   - Check default branch for the repo is "develop"
-    - If following these directions, it should be.
-    - Goto https://github.com/bluecadet/[PROJECT NAME]/settings
+    - Goto https://github.com/bluecadet/[project-name]/settings
     - There should be a section labeled "Default branch"
   - TODO: Check ddev is working...
     - Pull LIVE
   - TODO: Check PR/GHA are firing correctly.
     - ...
-    - Verify your changes are on panth dev
+    - Verify your changes are on pantheon dev
 
 ## Transitioning a Project between "development", "pre-launch", and "post-launch"
 
@@ -516,9 +504,8 @@ To manually apply changes from the external `upstream` repository (branch: `main
 
 1. Add the upstream repository as a remote (if not already added):
    ```sh
-   git remote add upstream https://github.com/bluecadet/upstream.git
+   git remote add upstream https://github.com/bluecadet/bc-upstream-drupal.git
    ```
-   Replace `bluecadet` with the correct organization or user name.
 
 2. Fetch the latest changes from upstream:
    ```sh
