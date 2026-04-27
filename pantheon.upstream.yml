@@ -5,7 +5,9 @@ enforce_https: transitional
 php_version: 8.3
 database:
   version: 10.6
-drush_version: 13
+# See https://docs.pantheon.io/guides/drush/drush-versions#drupal-9-10-and-beyond
+# for valid values. 10 is the latest major version of Drush Pantheon supports.
+drush_version: 10
 build_step: true
 protected_web_paths:
   - /private/
