@@ -353,7 +353,6 @@ Run individual checks:
 .ci/scripts/quality/check-npm-lint.sh      # JavaScript/TypeScript linting (Biome)
 .ci/scripts/quality/check-phpcs.sh         # PHP coding standards
 .ci/scripts/quality/check-phpstan.sh       # Static analysis
-.ci/scripts/quality/check-drupal-check.sh  # Deprecated code detection
 ```
 
 ### Available Checks
@@ -361,7 +360,6 @@ Run individual checks:
 - **JavaScript/TypeScript Linting** - Uses Biome via `npm run lint`
 - **PHPCS** - Drupal and DrupalPractice coding standards
 - **PHPStan** - Static analysis for type errors and bugs
-- **drupal-check** - Detects deprecated Drupal API usage
 
 ### Output Modes
 
